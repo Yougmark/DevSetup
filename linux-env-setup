@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install git vim-gnome vim-gui-common tmux exuberant-ctags git-email
+sudo apt-get install git vim-gui-common tmux exuberant-ctags git-email
 #sudo apt-get install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev
 cd
 mv ~/.vim ~/.vim.orig

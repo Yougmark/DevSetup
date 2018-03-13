@@ -1,6 +1,11 @@
 #!/bin/bash
 
-sudo apt-get install git tmux exuberant-ctags git-email neovim
+os=`uname`
+if [[ "$os" == 'Linux' ]]; then
+    sudo apt-get install git tmux exuberant-ctags git-email neovim
+elif [[ "$os" == 'Darwin' ]]; then
+    brew install tmux neovim
+fi
 #sudo apt-get install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev
 currdir=$(pwd)
 

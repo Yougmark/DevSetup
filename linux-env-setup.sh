@@ -4,17 +4,20 @@ os=`uname`
 if [[ "$os" == 'Linux' ]]; then
     sudo apt-get install git tmux exuberant-ctags git-email neovim
 elif [[ "$os" == 'Darwin' ]]; then
-    brew install tmux neovim
+    brew install tmux neovim ctags 
 fi
 #sudo apt-get install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev
+
 currdir=$(pwd)
 
 # tmux
-cp $currdir/.tmux.conf ~/
+ln -Ff $currdir/.tmux.conf ~/.tmux.conf
 
 # nvim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mkdir -p ~/.config/nvim/
-cp $currdir/init.vim ~/.config/nvim/
-vi +PluginInstall +qall
+ln -Ff $currdir/init.vim ~/.config/nvim/init.vim
+echo "Installing nvim plugins ..."
+nvim "+PlugInstall" "+qall"
+echo "Finished ..."

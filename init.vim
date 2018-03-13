@@ -5,6 +5,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'donRaphaco/neotex', { 'for': 'tex' }
+Plug 'lervag/vimtex'
+Plug 'rhysd/vim-grammarous'
 call plug#end()
 " end setup for vim-plug
 

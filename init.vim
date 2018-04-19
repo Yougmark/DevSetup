@@ -16,6 +16,14 @@ set number
 set scrolloff=7
 set textwidth=80
 
+" When editing a file, always jump to the last cursor position
+autocmd BufReadPost *
+      \ if ! exists("g:leave_my_cursor_position_alone") |
+      \     if line("'\"") > 0 && line ("'\"") <= line("$") |
+      \         exe "normal g'\"" |
+      \     endif |
+      \ endif
+
 " eggache vim
 :command W w
 :command WQ wq

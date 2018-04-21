@@ -5,9 +5,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'donRaphaco/neotex', { 'for': 'tex' }
+Plug 'donRaphaco/neotex', { 'for': 'tex' , 'branch': 'subfile'}
 Plug 'lervag/vimtex'
 Plug 'rhysd/vim-grammarous'
+Plug 'bronson/vim-trailing-whitespace'
 call plug#end()
 " end setup for vim-plug
 
@@ -73,3 +74,6 @@ let g:airline_theme='minimalist'
 " Keybindings for plugin toggle
 nmap <F5> :TagbarToggle<cr>
 nmap <F6> :NERDTreeToggle<cr>
+
+" LaTex
+let g:tex_flavor="latex"

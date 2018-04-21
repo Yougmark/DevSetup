@@ -1,10 +1,14 @@
 #!/bin/bash
 
 os=`uname`
+echo $os
 if [[ "$os" == 'Linux' ]]; then
-    sudo apt-get install git tmux exuberant-ctags git-email neovim
+    echo "installing..."
+    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo apt-get update
+    sudo apt-get install git tmux exuberant-ctags git-email neovim curl
 elif [[ "$os" == 'Darwin' ]]; then
-    brew install tmux neovim ctags 
+    brew install tmux neovim ctags curl
 fi
 #sudo apt-get install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev
 

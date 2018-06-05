@@ -6,7 +6,8 @@ if [[ "$os" == 'Linux' ]]; then
     echo "installing..."
     sudo add-apt-repository ppa:neovim-ppa/stable
     sudo apt-get update
-    sudo apt-get install git tmux exuberant-ctags git-email neovim curl
+    #sudo apt-get install git tmux exuberant-ctags git-email neovim curl
+    sudo apt-get install git tmux exuberant-ctags neovim curl
 elif [[ "$os" == 'Darwin' ]]; then
     brew install tmux neovim ctags curl
 fi
@@ -15,13 +16,13 @@ fi
 currdir=$(pwd)
 
 # tmux
-ln -Ff $currdir/.tmux.conf ~/.tmux.conf
+ln -Ffs $currdir/.tmux.conf ~/.tmux.conf
 
 # nvim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mkdir -p ~/.config/nvim/
-ln -Ff $currdir/init.vim ~/.config/nvim/init.vim
+ln -Ffs $currdir/init.vim ~/.config/nvim/init.vim
 echo "Installing nvim plugins ..."
 nvim "+PlugInstall" "+qall"
 echo "Finished ..."

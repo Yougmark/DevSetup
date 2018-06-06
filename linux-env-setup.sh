@@ -7,7 +7,7 @@ if [[ "$os" == 'Linux' ]]; then
     sudo add-apt-repository ppa:neovim-ppa/stable
     sudo apt-get update
     #sudo apt-get install git tmux exuberant-ctags git-email neovim curl
-    sudo apt-get install git tmux exuberant-ctags neovim curl
+    sudo apt-get install git tmux exuberant-ctags neovim curl cscope
 elif [[ "$os" == 'Darwin' ]]; then
     brew install tmux neovim ctags curl
 fi

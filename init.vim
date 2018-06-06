@@ -17,6 +17,10 @@ set number
 set scrolloff=7
 set textwidth=80
 
+set shiftwidth=4
+set tabstop=4
+set expandtab
+
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
       \ if ! exists("g:leave_my_cursor_position_alone") |

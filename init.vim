@@ -9,7 +9,11 @@ Plug 'donRaphaco/neotex', { 'for': 'tex' , 'branch': 'subfile'}
 Plug 'lervag/vimtex'
 Plug 'rhysd/vim-grammarous'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
 call plug#end()
+call glaive#Install()
 " end setup for vim-plug
 
 " Basics
@@ -17,9 +21,9 @@ set number
 set scrolloff=7
 set textwidth=80
 
-set shiftwidth=4
-set tabstop=4
-set expandtab
+" set shiftwidth=4
+" set tabstop=4
+" set expandtab
 
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
@@ -89,3 +93,16 @@ nmap <F6> :NERDTreeToggle<cr>
 
 " LaTex
 let g:tex_flavor="latex"
+
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  " autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType vue AutoFormatBuffer prettier
+augroup END

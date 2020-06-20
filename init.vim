@@ -12,6 +12,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
+Plug 'tpope/vim-obsession'
 call plug#end()
 call glaive#Install()
 " end setup for vim-plug
@@ -21,9 +22,9 @@ set number
 set scrolloff=7
 set textwidth=80
 
-" set shiftwidth=4
-" set tabstop=4
-" set expandtab
+set shiftwidth=4
+set tabstop=4
+set expandtab
 
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *

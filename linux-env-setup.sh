@@ -17,6 +17,7 @@ currdir=$(pwd)
 
 # tmux
 ln -Ffs $currdir/.tmux.conf ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # nvim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -25,4 +26,6 @@ mkdir -p ~/.config/nvim/
 ln -Ffs $currdir/init.vim ~/.config/nvim/init.vim
 echo "Installing nvim plugins ..."
 nvim "+PlugInstall" "+qall"
+echo "alias vi='nvim'" >> ~/.bashrc
+echo "alias vim='nvim'" >> ~/.bashrc
 echo "Finished ..."

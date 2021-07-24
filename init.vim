@@ -1,5 +1,7 @@
 " setup for manually installed vim-plug (for nvim)
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
@@ -13,11 +15,17 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'tpope/vim-obsession'
+Plug 'pprovost/vim-ps1'
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-fugitive'
+Plug 'rust-lang/rust.vim'
+Plug 'MTDL9/vim-log-highlighting'
 call plug#end()
 call glaive#Install()
 " end setup for vim-plug
 
 " Basics
+set relativenumber
 set number
 set scrolloff=7
 set textwidth=80
@@ -25,6 +33,8 @@ set textwidth=80
 set shiftwidth=4
 set tabstop=4
 set expandtab
+
+" e ++ff=dos
 
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
@@ -86,7 +96,7 @@ let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 
 " Airline
-let g:airline_theme='minimalist'
+" let g:airline_theme=''
 
 " Keybindings for plugin toggle
 nmap <F5> :TagbarToggle<cr>
@@ -97,7 +107,7 @@ let g:tex_flavor="latex"
 
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  "autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType gn AutoFormatBuffer gn
@@ -107,3 +117,32 @@ augroup autoformat_settings
   " Alternative: autocmd FileType python AutoFormatBuffer autopep8
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
+
+colorscheme gruvbox
+
+source ~/.config/nvim/coc.vim
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_clear_cache_on_exit = 0
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" help ctrlp-mappings or submit ? in ctrlp for more help
+
+" fugitive
+map <leader>* :grep '\b<cword>\b'<CR><CR>
+
+" ripgrep
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif

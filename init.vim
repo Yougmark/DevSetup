@@ -20,6 +20,13 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim'
 Plug 'MTDL9/vim-log-highlighting'
+Plug 'iamcco/markdown-preview.nvim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'alok/notational-fzf-vim'
+Plug 'preservim/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 call plug#end()
 call glaive#Install()
 " end setup for vim-plug
@@ -28,6 +35,7 @@ call glaive#Install()
 set relativenumber
 set number
 set scrolloff=7
+set sidescroll=10
 set textwidth=80
 
 set shiftwidth=4
@@ -53,30 +61,30 @@ autocmd BufReadPost *
 :command QA qa
 
 " Cscope shortcuts
-nmap <unique> <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <unique> <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <unique> <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <unique> <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <unique> <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space><C-Space>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space><C-Space>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space><C-Space>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space><C-Space>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space><C-Space>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <unique> <C-Space><C-Space>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <unique> <C-Space><C-Space>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <unique> <C-Space><C-Space>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space><C-Space>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-Space><C-Space>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
 " Nerd Tree
 let NERDChristmasTree=0
@@ -146,3 +154,25 @@ if executable("rg")
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
+
+" notational-fzf-vim
+let g:nv_search_paths = ['~/note']
+noremap <leader>n :NV<CR>
+vnoremap <leader>n <C-C>:NV<CR>
+inoremap <F3> <C-O>:NV<CR>
+let g:nv_create_note_window = 'tabedit'
+
+" misc
+" add date
+map <leader>d a<!-- <C-R>=strftime("%c")<CR> --><Esc>
+" unmap F1
+map <F1> <Esc>
+imap <F1> <Esc>
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+
+" c++ syntax highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1

@@ -27,6 +27,12 @@ Plug 'alok/notational-fzf-vim'
 Plug 'preservim/vim-markdown'
 Plug 'godlygeek/tabular'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'mg979/vim-visual-multi'
+Plug 'junegunn/vim-easy-align'
+Plug 'mbbill/undotree'
+" Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 call glaive#Install()
 " end setup for vim-plug
@@ -129,6 +135,7 @@ augroup END
 colorscheme gruvbox
 
 source ~/.config/nvim/coc.vim
+source ~/.config/nvim/nvim-tree.vim
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -176,3 +183,6 @@ let g:vim_markdown_folding_disabled = 1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+
+" vim-devicons
+set encoding=UTF-8

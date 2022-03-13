@@ -24,6 +24,10 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mkdir -p ~/.config/nvim/
 ln -Ffs $currdir/init.vim ~/.config/nvim/init.vim
+ln -Ffs $currdir/coc.vim ~/.config/nvim/coc.vim
+ln -Ffs $currdir/nvim-tree.vim ~/.config/nvim/nvim-tree.vim
+ln -Ffs $currdir/coc-settings.json ~/.config/nvim/coc-settings.json
+
 echo "Installing nvim plugins ..."
 nvim "+PlugInstall" "+qall"
 echo "alias vi='nvim'" >> ~/.bashrc

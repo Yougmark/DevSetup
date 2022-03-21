@@ -20,7 +20,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim'
 Plug 'MTDL9/vim-log-highlighting'
-Plug 'iamcco/markdown-preview.nvim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'alok/notational-fzf-vim'
@@ -164,7 +164,7 @@ if executable("rg")
 endif
 
 " notational-fzf-vim
-let g:nv_search_paths = ['~/note']
+let g:nv_search_paths = ['~/Library/Mobile Documents/com~apple~CloudDocs/note']
 noremap <leader>n :NV<CR>
 vnoremap <leader>n <C-C>:NV<CR>
 inoremap <F3> <C-O>:NV<CR>
@@ -173,6 +173,8 @@ let g:nv_create_note_window = 'tabedit'
 " fzf
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
+let g:fzf_layout = { 'down': '60%' }
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -190,6 +192,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " add date
 map <leader>d a<!-- <C-R>=strftime("%c")<CR> --><Esc>
 " unmap F1
+"
 map <F1> <Esc>
 imap <F1> <Esc>
 

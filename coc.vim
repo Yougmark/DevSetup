@@ -166,3 +166,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" [clangd] Switch between source/header
+nnoremap <silent><nowait> <space>h  :<C-u>CocCommand clangd.switchSourceHeader<CR>

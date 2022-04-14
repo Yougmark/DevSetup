@@ -20,7 +20,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim'
 Plug 'MTDL9/vim-log-highlighting'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'alok/notational-fzf-vim'
@@ -121,7 +121,7 @@ let g:tex_flavor="latex"
 
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
-  "autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType gn AutoFormatBuffer gn
@@ -164,7 +164,7 @@ if executable("rg")
 endif
 
 " notational-fzf-vim
-let g:nv_search_paths = ['~/Library/Mobile Documents/com~apple~CloudDocs/note']
+let g:nv_search_paths = ['~/note']
 noremap <leader>n :NV<CR>
 vnoremap <leader>n <C-C>:NV<CR>
 inoremap <F3> <C-O>:NV<CR>
@@ -195,6 +195,9 @@ map <leader>d a<!-- <C-R>=strftime("%c")<CR> --><Esc>
 "
 map <F1> <Esc>
 imap <F1> <Esc>
+
+vmap "+y :!xclip -f -sel clip<CR>
+map "+p :r!xclip -o -sel clip<CR>
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1

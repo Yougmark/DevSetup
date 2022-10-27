@@ -55,4 +55,5 @@ echo "Finished ..."
 curl https://sh.rustup.rs -sSf | sh
 . "$HOME/.cargo/env"
 cargo install ripgrep
+cargo install difftastic
 

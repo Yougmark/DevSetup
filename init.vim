@@ -47,6 +47,8 @@ set textwidth=80
 set shiftwidth=4
 set tabstop=4
 set expandtab
+set ignorecase
+set smartcase
 
 " e ++ff=dos
 

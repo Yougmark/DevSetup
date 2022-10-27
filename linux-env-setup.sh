@@ -24,6 +24,7 @@ fi
 currdir=$(pwd)
 
 # tmux
+cp ~/.tmux.conf ~/.tmux.conf.orig
 ln -Ffs $currdir/.tmux.conf ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -37,6 +38,7 @@ ln -Ffs $currdir/nvim-tree.vim ~/.config/nvim/nvim-tree.vim
 ln -Ffs $currdir/coc-settings.json ~/.config/nvim/coc-settings.json
 # ln -Ffs $currdir/bashrc ~/.bashrc
 
+cp ~/.bashrc ~/.bashrc.orig
 echo "Installing nvim plugins ..."
 nvim "+PlugInstall" "+qall"
 echo "alias vi='nvim'" >> ~/.bashrc

@@ -31,8 +31,9 @@ Plug 'mg979/vim-visual-multi'
 Plug 'junegunn/vim-easy-align'
 Plug 'mbbill/undotree'
 " Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ryanoasis/vim-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'dag/vim-fish'
 call plug#end()
 call glaive#Install()
 " end setup for vim-plug
@@ -126,6 +127,8 @@ augroup autoformat_settings
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
+  " has jumping to async keyword issue; replaced by let g:rustfmt_autosave = 1
+  " autocmd FileType rust AutoFormatBuffer rustfmt
   autocmd FileType gn AutoFormatBuffer gn
   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
   autocmd FileType java AutoFormatBuffer google-java-format
@@ -211,3 +214,10 @@ let g:cpp_class_decl_highlight = 1
 
 " vim-devicons
 set encoding=UTF-8
+
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+vnoremap m "hy:Rg <C-r>h<enter>
+
+set mouse=
+
+let g:rustfmt_autosave = 1

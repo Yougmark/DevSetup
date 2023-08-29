@@ -4,15 +4,15 @@ os=`uname`
 echo $os
 if [[ "$os" == 'Linux' ]]; then
     echo "installing..."
-    sudo add-apt-repository ppa:neovim-ppa/stable
+    #sudo add-apt-repository ppa:neovim-ppa/stable
     sudo apt-get update
-    #sudo apt-get install git tmux exuberant-ctags git-email neovim curl
+    #sudo apt-get install git tmux exuberant-ctags git-email curl
     #sudo apt-get install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev
-    sudo apt-get install git tmux exuberant-ctags neovim curl cscope wget yarn \
+    sudo apt-get install git tmux exuberant-ctags curl cscope wget yarn \
         nodejs tree fzf lsd bat fd-find
     curl -sL install-node.vercel.app/lts | sudo bash
 elif [[ "$os" == 'Darwin' ]]; then
-    brew install tmux neovim ctags curl fzf wget
+    brew install tmux ctags curl fzf wget
 
     # To install useful key bindings and fuzzy completion:
     $(brew --prefix)/opt/fzf/install
@@ -42,7 +42,7 @@ cp ~/.bashrc ~/.bashrc.orig
 echo "Installing nvim plugins ..."
 nvim "+PlugInstall" "+qall"
 echo "alias vi='nvim'" >> ~/.bashrc
-echo "alias vim='nvim'" >> ~/.bashrc
+#echo "alias vim='nvim'" >> ~/.bashrc
 echo "source /usr/share/doc/fzf/examples/key-bindings.bash" >> ~/.bashrc
 echo "source /usr/share/doc/fzf/examples/completion.bash" >> ~/.bashrc
 echo "set -o vi" >> ~/.bashrc

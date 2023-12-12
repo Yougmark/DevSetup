@@ -9,7 +9,7 @@ if [[ "$os" == 'Linux' ]]; then
     sudo apt-get update
     sudo apt-get install git tmux exuberant-ctags curl cscope wget yarn \
         nodejs tree fzf bat fd-find snapd
-    sudo snap install lsd tldr
+    sudo snap install tldr
     sudo snap install --beta nvim --classic
     curl -sL install-node.vercel.app/lts | sudo bash
 elif [[ "$os" == 'Darwin' ]]; then
@@ -63,4 +63,4 @@ curl https://sh.rustup.rs -sSf | sh
 . "$HOME/.cargo/env"
 cargo install ripgrep
 cargo install difftastic
-
+cargo install lsd

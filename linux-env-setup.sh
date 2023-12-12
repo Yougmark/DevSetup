@@ -1,15 +1,16 @@
 #!/bin/bash
 
+set -x
+
 os=`uname`
 echo $os
 if [[ "$os" == 'Linux' ]]; then
     echo "installing..."
-    #sudo add-apt-repository ppa:neovim-ppa/stable
     sudo apt-get update
-    #sudo apt-get install git tmux exuberant-ctags git-email curl
-    #sudo apt-get install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev
     sudo apt-get install git tmux exuberant-ctags curl cscope wget yarn \
-        nodejs tree fzf lsd bat fd-find
+        nodejs tree fzf bat fd-find snapd
+    sudo snap install lsd tldr
+    sudo snap install --beta nvim --classic
     curl -sL install-node.vercel.app/lts | sudo bash
 elif [[ "$os" == 'Darwin' ]]; then
     brew install tmux ctags curl fzf wget
@@ -25,8 +26,12 @@ currdir=$(pwd)
 
 # tmux
 cp ~/.tmux.conf ~/.tmux.conf.orig
-ln -Ffs $currdir/.tmux.conf ~/.tmux.conf
+ln -Ffs $currdir/tmux.conf ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# git config
+cp ~/.gitconfig ~/.gitconfig.orig
+ln -Ffs $currdir/gitconfig ~/.gitconfig
 
 # nvim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \

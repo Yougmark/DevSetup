@@ -1,0 +1,37 @@
+[user]
+    name = Ming Yang
+    email = ming.yang@weride.ai
+[core]
+    editor = vi
+
+# delta configuration starts ====
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    line-numbers = true
+    side-by-side = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+# delta configuration ends ====
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    l = log 
+    ls = log --stat
+    la = log --pretty=full
+    ll = log --pretty=lone
+    lp = log -p
+    caa = commit -a --amend
+
+[pretty]
+    lone = tformat:%C(auto)%h %as %C(green)%>(15,trunc)%an%C(auto)%d %s

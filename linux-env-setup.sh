@@ -47,6 +47,7 @@ cp ~/.bashrc ~/.bashrc.orig
 echo "Installing nvim plugins ..."
 nvim "+PlugInstall" "+qall"
 echo "alias vi='nvim'" >> ~/.bashrc
+echo "alias le='less -R'" >> ~/.bashrc
 #echo "alias vim='nvim'" >> ~/.bashrc
 echo "source /usr/share/doc/fzf/examples/key-bindings.bash" >> ~/.bashrc
 echo "source /usr/share/doc/fzf/examples/completion.bash" >> ~/.bashrc
@@ -64,3 +65,4 @@ curl https://sh.rustup.rs -sSf | sh
 cargo install ripgrep
 cargo install difftastic
 cargo install lsd
+cargo install bat

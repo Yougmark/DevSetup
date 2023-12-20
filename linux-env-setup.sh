@@ -49,8 +49,8 @@ nvim "+PlugInstall" "+qall"
 echo "alias vi='nvim'" >> ~/.bashrc
 echo "alias le='less -R'" >> ~/.bashrc
 #echo "alias vim='nvim'" >> ~/.bashrc
-echo "source /usr/share/doc/fzf/examples/key-bindings.bash" >> ~/.bashrc
-echo "source /usr/share/doc/fzf/examples/completion.bash" >> ~/.bashrc
+echo "source $currdir/key-bindings.bash" >> ~/.bashrc
+echo "source $currdir/completion.bash" >> ~/.bashrc
 echo "set -o vi" >> ~/.bashrc
 # echo "set editing-mode vi" >> ~/.bashrc
 # echo "set keymap vi" >> ~/.bashrc

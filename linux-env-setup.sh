@@ -58,6 +58,7 @@ echo "set -o vi" >> ~/.bashrc
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 echo "export HISTSIZE=100000" >> ~/.bashrc
 echo "export HISTFILESIZE=200000" >> ~/.bashrc
+echo 'PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"' >> ~/.bashrc
 echo "Finished ..."
 
 curl https://sh.rustup.rs -sSf | sh

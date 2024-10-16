@@ -11,6 +11,7 @@ if [[ "$os" == 'Linux' ]]; then
         nodejs tree fzf bat fd-find snapd
     sudo snap install tldr
     sudo snap install --beta nvim --classic
+    sudo apt install clang-17 clangd-17
     curl -sL install-node.vercel.app/lts | sudo bash
 elif [[ "$os" == 'Darwin' ]]; then
     brew install tmux ctags curl fzf wget
@@ -67,3 +68,6 @@ cargo install ripgrep
 cargo install difftastic
 cargo install lsd
 cargo install bat
+cargo install git-delta
+cargo install cargo-expand
+cargo install du-dust

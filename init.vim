@@ -32,6 +32,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'mbbill/undotree'
 " Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
+Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'dag/vim-fish'
 call plug#end()
@@ -102,8 +103,8 @@ let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', '\.o$']
 let NERDTreeShowBookmarks=1
 let NERDTreeWinPos = "right"
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '~'
+"let g:NERDTreeDirArrowExpandable = '+'
+"let g:NERDTreeDirArrowCollapsible = '~'
 
 " Tagbar
 let g:tagbar_left=1
